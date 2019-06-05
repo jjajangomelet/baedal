@@ -27,4 +27,7 @@ def create(request):
             order.host = request.user
             order.save()
     else:
-        
+        return redirect("")
+
+def read(request):
+    order = Order.objects.all('-pk')
