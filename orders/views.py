@@ -18,6 +18,7 @@ def index(request):
     }
     return render(request, 'orders/index.html', ctx)
 
+
 @login_required
 def create(request):
     if request.method == 'POST':
