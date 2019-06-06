@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from accounts.models import User
 
 # Create your models here.
 class Order(models.Model):
@@ -12,7 +13,7 @@ class Order(models.Model):
     max_user = models.IntegerField()
     balance = models.IntegerField()
     order_time = models.DateTimeField(auto_now_add=True)
-    host = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    host = models.ForeignKey(User, on_delete=models.CASCADE)
  
 class UserOrderDetail(models.Model):
     buyer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
