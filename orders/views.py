@@ -18,13 +18,16 @@ def create(request):
     order.save()
     return redirect("")
 
-def read(request, order_id):
+def read(request):
     read_order = Order.objects.all()
     time_now = timezone.datetime.now()
     return render(request, "orders/read.html", { 'read_order': read_order })
 
-def new(request):
-    return render(request, "orders/new.html")
+def new_host(request):
+    return render(request, "orders/new_host.html")
 
 def detail(request):
     return render(request, "orders/detail.html")
+
+def new_participant(request):
+    return render(request, "orders/new_participant.html")

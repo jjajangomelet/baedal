@@ -6,8 +6,9 @@ app_name = 'orders'
 urlpatterns = [
     path('', views.index, name="index"),
     path('read/', views.read, name="read"),
-    path('new/', views.new, name="new"),
+    path('new_host/', views.new_host, name="new_host"),
     path('detail/', views.detail, name="detail"),
+    path('new_participant/', views.new_participant, name ="new_participant"),
     
     # path('create/', views.create, name="create"),
     
