@@ -9,7 +9,7 @@ def index(request):
     return render(request, "orders/index.html")
 
 # @login_required
-def create(request):
+def create_host(request):
     create_order = Order.objects.all('-pk')
     create_order.take_spot = ""
     create_order.restaurant = ""
