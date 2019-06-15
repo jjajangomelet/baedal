@@ -15,11 +15,12 @@ def create_host(request):
     create_order.restaurant = ""
     create_order.balance = ""
     create_order.order_time = ""
-    return redirect("")
+=
 
 def read(request):
     read_order = Order.objects.all()
-    return render(request, "orders/read.html", { 'read_order': read_order})
+    time_now = timezone.datetime.now()
+    return render(request, "orders/read.html", { 'read_order': read_order })
 
 def new_host(request):
     return render(request, "orders/new_host.html")
