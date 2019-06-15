@@ -9,14 +9,13 @@ def index(request):
     return render(request, "orders/index.html")
 
 # @login_required
-def create(request):
-    order = Order()
-    order.take_spot = request.POST['order_take_spot']
-    order.restaurant = request.POST['order_restaurant']
-    order.balance = ""
-    order.order_time = request.POST['order_time']
-    order.save()
-    return redirect("")
+def create_host(request):
+    create_order = Order.objects.all('-pk')
+    create_order.take_spot = ""
+    create_order.restaurant = ""
+    create_order.balance = ""
+    create_order.order_time = ""
+=
 
 def read(request):
     read_order = Order.objects.all()

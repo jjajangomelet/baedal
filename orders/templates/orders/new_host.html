@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+    {% block content %}
+    <form action="/action_page.php" method="get">
+        가게 이름 <input type="text" name="fname"><br>
+        대분류 <input type="text" name="lname"><br>
+        배달 수령 위치 <input type="text" name="fname"><br>
+        최소 금액 <input type="text" name="fname"><br>
+        주문 시간 <input type="text" name="fname"><br>
+        최대 인원 <input type="text" name="fname"><br>
+        
+
+        
+    
+
+    </form>
+    <a href = './read'>hi</a>
+    <div><input type="button" value="주문 참여하d기" name = "order_invite" onlclick = "location.href='read'" ></div>
+    <div><input type="submit" value="주문 참여하기" name = "order_invite" href="{%url 'orders:read'%}'" ></div>    
+    
+    
+    
+ 
+    
+    {%endblock%}
+</body>
+</html>

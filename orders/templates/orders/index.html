@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {%load staticfiles %}
-{% block content %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +11,25 @@
     
     <link rel="stylesheet"  href="{% static 'css_orders/style_orders.css' %}">
 </head>
+
+{% block content %}
+
 <body>
-  <div><input type="button" value="주문 생성하기" onClick="location.href='new_host'"></div>
-  <div><input type="button" value="주문 참여하기" onClick="location.href='read'"></div>  
+  
+  <a href = "{%url 'orders:read'%}" >read로 가자</a>
+
+  <a href = "./read" >read로 가자</a>
+  
+  
+  <span>hji</span>
+  <div><input type="button" value="주문 생성하기" name = "order_create" onclick="location.href='new_host' "></div>
+  <div><input type="button" value="주문 참여하기" name = "order_invite" onclick="location.href='read' "></div>  
     
-
-
-   
 </body>
-</div>
+{% endblock content %}
+
+
 </html>
 
 
 
-{% endblock %}
