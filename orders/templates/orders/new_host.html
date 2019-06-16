@@ -12,22 +12,25 @@
 
 <body>
     {% block content %}
-    <form action="/action_page.php" method="get">
-        가게 이름 <input type="text" name="fname"><br>
-        대분류 <input type="text" name="lname"><br>
-        배달 수령 위치 <input type="text" name="fname"><br>
-        최소 금액 <input type="text" name="fname"><br>
-        주문 시간 <input type="text" name="fname"><br>
-        최대 인원 <input type="text" name="fname"><br>
-        
-
-        
-    
-
+    <form action="{% url 'orders:create_order' %}" method="POST" enctype="multipart/form-data" id="create-order">
+    {% csrf_token %}
+        가게 이름 <input type="text" name="create_order_restaurant"><br>
+        대분류 <input type="text" name="fname"><br>
+        배달 수령 위치 <input type="text" name="create_order_take_place"><br>
+        최소 금액 <input type="number" name="create_order_min_price"><br>
+        <!--주문 시간 <input type="time" name="create_order_order_time"><br>-->
+        balance <input type="number" name="create_order_balance"><br>
+        최대 인원 <input type="number" name="create_order_max_user"><br>
+        <button type="submit" form="create-order">배달 생성하기!</button>
     </form>
-    <a href = './read'>hi</a>
-    <div><input type="button" value="주문 참여하d기" name = "order_invite" onlclick = "location.href='read'" ></div>
-    <div><input type="submit" value="주문 참여하기" name = "order_invite" href="{%url 'orders:read'%}'" ></div>    
+
+    <a href="{% url 'orders:read' %}">hi</a>
+    <div><input type="button" value="주문 참여하d기" name = "order_invite" onClick = "location.href='read'" ></div>
+    <div><input type="submit" value="주문 참여하기" name = "order_invite" href="{%url 'orders:read'%}'" ></div>
+
+    <form>
+        <button type="submit" formaction="{% url 'orders:read' %}">TEST</button>
+    </form>
     
     
     

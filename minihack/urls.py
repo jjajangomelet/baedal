@@ -18,6 +18,7 @@ from django.urls import path, include
 # import accounts as accounts
 # import orders as orders
 from orders import views
+from orders import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
