@@ -26,7 +26,7 @@
 
     <a href="{% url 'orders:read' %}">hi</a>
     <div><input type="button" value="주문 참여하d기" name = "order_invite" onClick = "location.href='read'" ></div>
-    <div><input type="submit" value="주문 참여하기" name = "order_invite" href="{%url 'orders:read'%}'" ></div>
+    <div><input type="submit" value="주문 참여하기" name = "order_invite" href="{%url 'orders:read'%}" ></div>
 
     <form>
         <button type="submit" formaction="{% url 'orders:read' %}">TEST</button>
