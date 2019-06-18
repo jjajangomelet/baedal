@@ -17,6 +17,20 @@ class Order(models.Model):
  
 class UserOrderDetail(models.Model):
     buyer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order = models.ForeignKey('Order', on_delete=models.CASCADE)
     detail = models.TextField()
     price = models.IntegerField()
+
+class Retaurant(models.Model):
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
+    branch = models.CharField(max_length=30)
+    # logo = models.ImageField()
+    contact_telephone = models.CharField(max_length=30)
+    # menu field
+    # 
+
+class Brand(models.Model):
+    name = models.CharField(max_length=30)
+    # logo = imageField()
+    
+
