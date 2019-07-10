@@ -3,34 +3,42 @@ from django.conf import settings
 from accounts.models import User
 
 # Create your models here.
-class Order(models.Model):
-    TAKE_AREA = [(0, "기숙사"), (1, "궁동"), (2, "죽동")]
-    restaurant = models.CharField(max_length=255, blank=True)
-    area = models.IntegerField(choices=TAKE_AREA, default=0, blank=True)
-    take_place = models.CharField(max_length=255)
-    min_price = models.IntegerField()
-    delivery_price = models.BooleanField(default=False, blank=True)
-    max_user = models.IntegerField()
-    balance = models.IntegerField(blank=True)
-    order_time = models.DateTimeField(auto_now_add=True, blank=True)
-    host = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
- 
-class UserOrderDetail(models.Model):
-    buyer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    order = models.ForeignKey('Order', on_delete=models.CASCADE)
-    detail = models.TextField()
-    price = models.IntegerField()
+from django.db import models
+from django.conf import settings
+from accounts.models import accounts
 
-class Retaurant(models.Model):
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
-    branch = models.CharField(max_length=30)
-    # logo = models.ImageField()
-    contact_telephone = models.CharField(max_length=30)
-    # menu field
-    # 
+# Create your models here.
+class Matching(models.Model):
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+    host = models.ForeignKey(accounts, on_delete=models.CASCADE)
+    expected_ordertime = models.DateTimeField()
+    take_spot = models.CharField(max_length=255)
+    banlance = modles.IntegerField()
+    max_user = models.IntegerField()
+    delivery_price = models.BooleanField(default=0)
+
+    STATUS = (
+        ('P', 'PROCEEDING'),
+        ('C', 'CONFIRM'),
+        ('F', 'FINESHED'),
+    )
+    status = models.ChareField(max_length = 1 , default = 'P', choices = STATUS)
+    
+    
+ 
+class MatchingParticipant(models.Model):
+    participant = models.ForeignKey(accounts, on_delete=models.CASCADE)
+    matching = models.ForeignKey('Matching', on_delete=models.CASCADE)
+    totalPrice = models.IntegerField()
+
+class OrderList(models.Model):
+    matchingParticipant
 
 class Brand(models.Model):
     name = models.CharField(max_length=30)
     # logo = imageField()
+    
+
+
     
 
