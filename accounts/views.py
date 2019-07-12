@@ -31,16 +31,6 @@ def signup(request):
 
 # @require_http_methods(['GET', 'POST'])
 def login(request):
-    # if request.method == 'POST':
-    #     username = request.POST['username']
-    #     password = request.POST['password']
-    #     user = auth.authenticate(request, username=username, password=password)
-    #     if user is not None:
-    #         auth.login(request, user)
-    #         return redirect('orders/index')
-    #     else:
-    #         return render(request, '', {'error' : '아이디 또는 비밀번호가 틀립니다'})
-    # else:
     return render(request, 'accounts/login.html')
 
 
