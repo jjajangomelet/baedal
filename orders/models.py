@@ -3,34 +3,57 @@ from django.conf import settings
 from accounts.models import Accounts
 
 # Create your models here.
-class Order(models.Model):
-    TAKE_AREA = [(0, "기숙사"), (1, "궁동"), (2, "죽동")]
-    restaurant = models.CharField(max_length=255, blank=True)
-    area = models.IntegerField(choices=TAKE_AREA, default=0, blank=True)
-    take_place = models.CharField(max_length=255)
-    min_price = models.IntegerField()
-    delivery_price = models.BooleanField(default=False, blank=True)
+from django.db import models
+from django.conf import settings
+from accounts.models import Accounts
+
+# Create your models here.
+class Matching(models.Model):
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+    host = models.ForeignKey(Accounts, on_delete=models.CASCADE)
+    expected_ordertime = models.DateTimeField()
+    take_spot = models.CharField(max_length=255)
+    banlance = models.IntegerField()
     max_user = models.IntegerField()
-    balance = models.IntegerField(blank=True)
-    order_time = models.DateTimeField(auto_now_add=True, blank=True)
-    host = models.ForeignKey(Accounts, on_delete=models.CASCADE, null=True, blank=True)
+    delivery_price = models.BooleanField(default=0)
+
+    STATUS = (
+        ('P', 'PROCEEDING'),
+        ('C', 'CONFIRM'),
+        ('F', 'FINESHED'),
+    )
+    status = models.CharField(max_length = 1 , default = 'P', choices = STATUS)
+    
+    
  
-class UserOrderDetail(models.Model):
-    buyer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    order = models.ForeignKey('Order', on_delete=models.CASCADE)
-    detail = models.TextField()
+class MatchingParticipant(models.Model):
+    participant = models.ForeignKey(Accounts, on_delete=models.CASCADE)
+    matching = models.ForeignKey('Matching', on_delete=models.CASCADE)
+    totalPrice = models.IntegerField()
+
+class OrderList(models.Model):
+    matchingParticipant = models.ForeignKey('MatchingParticipant', on_delete=models.CASCADE)
+    name = models.CharField(max_length = 10)
     price = models.IntegerField()
+    amount = models.IntegerField()
 
 class Restaurant(models.Model):
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
-    branch = models.CharField(max_length=30)
-    # logo = models.ImageField()
-    contact_telephone = models.CharField(max_length=30)
-    # menu field
-    # 
-
-class Brand(models.Model):
     name = models.CharField(max_length=30)
+    min_price = models.IntegerField()
+    category = models.CharField(max_length = 50)
+    address = models.CharField(max_length = 50)
+    contact = models.CharField(max_length = 50)
+    brandImage = models.ImageField(upload_to = 'media/restaurant')
     # logo = imageField()
+
+
+class Menu(models.Model):
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+    name = models.CharField(max_length = 50)
+    price = models.IntegerField()
+    foodImage = models.ImageField(upload_to = 'media/menu')
+    
+
+
     
 

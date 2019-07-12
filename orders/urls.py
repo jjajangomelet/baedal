@@ -4,7 +4,8 @@ from . import views
 app_name = 'orders'
 
 urlpatterns = [
-    path('', views.index, name="index"),
+    path('', views.cover, name="cover"),
+    path('index/', views.index, name="index"),
     path('read/', views.read, name="read"),
     path('new_host/', views.new_host, name="new_host"),
     path('detail/', views.detail, name="detail"),
