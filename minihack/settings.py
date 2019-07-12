@@ -39,7 +39,39 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'orders.apps.OrdersConfig',
+
+    #allauth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #providers
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.kakao',
+
+    #social-auth-app
+    'social_django',
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend', 
+    # 기본 인증 백엔드
+    'allauth.account.auth_backends.AuthenticationBackend', # 추가 
+
+    'social_core.backends.kakao.KakaoOAuth2',
+    'social_core.backends.line.GoogleOAuth2',
+]
+
+# 디폴트 SITE의 ID
+# 등록하지 않으면 각 요청 시에 host명의 site 인스턴스를 찾음
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/' # 로그인 후 리디렉션 할 페이지 
+ACCOUNT_LOGOUT_REDIRECT_URL = '/' # 로그아웃 후 리디렉션 할 페이지
+ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아웃
+ACCOUNT_AUTHENTICATION_METHOD = 'email' # 로그인 인증 방법
+ACCOUNT_EMAIL_REQUIRED = True # 이메일 로그인 인증시 반드시 따라와야됨.
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +81,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    #social-auth
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'minihack.urls'
@@ -64,7 +99,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
+            'debug' : DEBUG,
         },
     },
 ]
@@ -121,6 +160,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'accounts', 'static'),
     os.path.join(BASE_DIR, 'orders', 'static'),
@@ -129,5 +169,5 @@ STATICFILES_DIRS = [
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.Accounts'
 

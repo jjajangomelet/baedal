@@ -45,6 +45,12 @@ class Restaurant(models.Model):
     contact = models.charField()
     brandImage = models.ImageField(upload_to)
     # logo = imageField()
+
+
+class Menu(models.Model):
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+    name = models.charField(max_length = 50)
+    price = models.IntegerField(upload_to = '/media/restaurant')
     
 
 

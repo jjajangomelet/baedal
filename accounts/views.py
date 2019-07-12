@@ -7,6 +7,8 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 
 
+def form(request):
+    return render(request, 'accounts/form.html')
 
 
 # Create your views here.

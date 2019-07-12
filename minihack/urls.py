@@ -19,10 +19,11 @@ from django.urls import path, include
 # import orders as orders
 from orders import views
 from orders import urls
+from accounts import views, urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('accounts/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
     path('', include('orders.urls')),
     
 ]
