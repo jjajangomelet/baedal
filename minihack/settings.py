@@ -58,8 +58,6 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend', 
     # 기본 인증 백엔드
     'allauth.account.auth_backends.AuthenticationBackend', # 추가 
-
-    'social_core.backends.kakao.KakaoOAuth2',
 ]
 
 # 디폴트 SITE의 ID
@@ -85,33 +83,6 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
-SOCIALACCOUNT_PROVIDERS = {
-    'kakao': {
-        'METHOD': 'oauth2',
-        'SCOPE': ['account_email', 'profile', 'gender', 'age_range', 'birthday' ],  # 'user_friends'는 요청 안 함
-        # 'AUTH_PARAMS': {'auth_type': 'reauthenticate'}, # 매번 비밀번호 묻지 않으려면 주석처리
-        'INIT_PARAMS': {'cookie': True},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time',
-        ],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': lambda request: 'kr_KR',
-        'VERIFIED_EMAIL': False,
-    },
-}
-
-SOCIAL_AUTH_KAKAO_KEY = '65634a9da7b691cd55ae117fa7a67c06'
-SOCIAL_AUTH_KAKAO_SECRET = 'DKZGkQg2fhxIBHAEXUvXhVWXpICfcw8x'
 
 ROOT_URLCONF = 'minihack.urls'
 
