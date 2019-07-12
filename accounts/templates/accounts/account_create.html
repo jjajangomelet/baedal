@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>이런! 회원가입이 안되어 있으시군요.<br> 나머지 인적사항을 기입해주세요.</h1>
+    <script type='text/javascript'>
+    Kakao.API.request({
+        url: '/v1/user/me',
+        data: {
+            property_keys: ['kakao_account.email'],
+            property_keys: ['properties.nickname'],
+            property_keys: ['kakao_account.gender']
+        }
+    })
+    </script>
+    <form>
+        이메일<input type="text" value="kakao_account.email">
+        <br>
+        닉네임<input type="text" value="properties.nickname">
+        <br>
+        성별<input type="text" value="kakao_account.gender">
+        <br>
+
+    </form>
+</body>
