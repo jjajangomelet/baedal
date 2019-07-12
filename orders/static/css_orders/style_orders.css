@@ -3,21 +3,22 @@ background-color: blue;
 font-size: 30px;
 }
 
-.cover_page_back{
-    background-color: blue;
-    
+
+body{
+    background-size : cover;
 }
 
-.cover_page_photo{
-    position: relative;
-    opacity: 0.65;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+#cover{
+    background-color: #2DA7E0;
+    text-align: center;
+    margin-top: center;
+    margin-bottom: center;
 }
 
-.test{
-    background-image : url('/baedal/minihack/static/images/test.png');
-    background-color: black
+.cover_page{
+
+        
+        
+       
+
 }
