@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from accounts.models import User
+from accounts.models import Accounts
 
 # Create your models here.
 class Order(models.Model):
@@ -13,7 +13,7 @@ class Order(models.Model):
     max_user = models.IntegerField()
     balance = models.IntegerField(blank=True)
     order_time = models.DateTimeField(auto_now_add=True, blank=True)
-    host = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    host = models.ForeignKey(Accounts, on_delete=models.CASCADE, null=True, blank=True)
  
 class UserOrderDetail(models.Model):
     buyer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -21,7 +21,7 @@ class UserOrderDetail(models.Model):
     detail = models.TextField()
     price = models.IntegerField()
 
-class Retaurant(models.Model):
+class Restaurant(models.Model):
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
     branch = models.CharField(max_length=30)
     # logo = models.ImageField()
