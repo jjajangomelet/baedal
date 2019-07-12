@@ -21,8 +21,9 @@
         // 로그인 성공시, API를 호출합니다.
         Kakao.API.request({
           url: '/v2/user/me',
-          success: function(res) {
-            alert(JSON.stringify(res));
+          success: function(authObj) {
+            alert(JSON.stringify(authObj))
+            // alert(res.id);
           },
           fail: function(error) {
             alert(JSON.stringify(error));
