@@ -10,3 +10,4 @@ class Accounts(AbstractUser):
     gender = models.IntegerField(choices=GENDER, default=0)
     phoneNum = models.CharField(max_length=15, blank=True)
     birth_day = models.CharField(max_length=15, blank=True)
+    address = models.CharField(max_length=100)
