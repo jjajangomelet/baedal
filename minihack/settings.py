@@ -64,11 +64,14 @@ AUTHENTICATION_BACKENDS = [
 # 등록하지 않으면 각 요청 시에 host명의 site 인스턴스를 찾음
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '/' # 로그인 후 리디렉션 할 페이지 
-ACCOUNT_LOGOUT_REDIRECT_URL = '/' # 로그아웃 후 리디렉션 할 페이지
+LOGIN_REDIRECT_URL = 'accounts:login' # 로그인 후 리디렉션 할 페이지 
+ACCOUNT_LOGOUT_REDIRECT_URL = 'accounts:login' # 로그아웃 후 리디렉션 할 페이지
 ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아웃
 ACCOUNT_AUTHENTICATION_METHOD = 'email' # 로그인 인증 방법
 ACCOUNT_EMAIL_REQUIRED = True # 이메일 로그인 인증시 반드시 따라와야됨.
+SOCIALACCOUNT_AUTO_SIGNUP = False # SNS 인증 바로 가입 X
+ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignupForm'
+AUTH_USER_MODEL = 'accounts.Accounts'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,9 +81,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
-    #social-auth
-    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 
@@ -168,6 +168,4 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-AUTH_USER_MODEL = 'accounts.Accounts'
 
