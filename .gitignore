@@ -37,7 +37,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -116,12 +115,9 @@ celerybeat-schedule
 
 # Environments
 .env
-.venv
 env/
-venv/
 ENV/
 env.bak/
-venv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -296,4 +292,9 @@ modules.xml
 
 # End of https://www.gitignore.io/api/cloud9,django,python,pycharm+all,visualstudiocode
 
-**venv/Lib/site-packages/allauth/*
+#venv는 제외, 아래 allauth 디렉토리는 제외. *=폴더, **=파일
+venv/Scripts
+venv/Lib/site-packages/*
+venv/Include
+!venv/Lib/site-packages/allauth
+*pyvenv.cfg
