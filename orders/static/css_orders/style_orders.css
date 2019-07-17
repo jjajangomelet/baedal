@@ -1,4 +1,23 @@
 .test_order{
 background-color: blue;
 font-size: 30px;
-}   
+}
+
+.cover_page_back{
+    background-color: blue;
+    
+}
+
+.cover_page_photo{
+    position: relative;
+    opacity: 0.65;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.test{
+    background-image : url('/baedal/minihack/static/images/test.png');
+    background-color: black
+}

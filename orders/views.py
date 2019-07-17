@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Order, UserOrderDetail
+from .models import Matching, MatchingParticipant, OrderList, Restaurant, Menu
 from datetime import datetime
 from django.utils import timezone
 
 # Create your views here.
+def cover(request):
+    return render(request, "orders/cover.html")
+
 def index(request):
     return render(request, "orders/index.html")
 
@@ -13,7 +16,7 @@ def index(request):
 
 # @login_required
 def create_order(request):
-    create_order = Order()
+    create_order = Matching()
     create_order.restaurant = request.POST['create_order_restaurant']
     create_order.take_place = request.POST['create_order_take_place']
     create_order.max_user = request.POST['create_order_max_user']
@@ -23,7 +26,7 @@ def create_order(request):
     return redirect("orders:read")
 
 def read(request):
-    read_order = Order.objects.all()
+    # read_order = Order.objects.all()
     time_now = timezone.datetime.now()
     return render(request, "orders/read.html", { 'read_order': read_order })
 
