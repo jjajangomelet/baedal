@@ -70,8 +70,11 @@ ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아�
 ACCOUNT_AUTHENTICATION_METHOD = 'email' # 로그인 인증 방법
 ACCOUNT_EMAIL_REQUIRED = True # 이메일 로그인 인증시 반드시 따라와야됨.
 SOCIALACCOUNT_AUTO_SIGNUP = False # SNS 인증 바로 가입 X
-ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignupForm'
+ACCOUNT_EMAIL_VERIFICATION = None
+# EMAIL로 회원가입시 인증메일 발송여부 (mandatory:반드시 인증필요. optional:인증메일은 발송 그러나 인증하지 않아도 됨. none:인증메일X)
 AUTH_USER_MODEL = 'accounts.Accounts'
+ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.CustomSignupForm'
+SOCIALACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.CustomSocialSignupForm'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
