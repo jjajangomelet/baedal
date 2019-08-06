@@ -13,4 +13,5 @@ def login(request):
 def account_create(request):
     return render(request, 'accounts/account_create.html')
 
-
+def signup(request):
+    return render(request, 'accounts/signup.html')
