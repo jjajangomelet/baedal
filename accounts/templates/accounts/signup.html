@@ -1,70 +1,109 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 {% block content %}
 {% load account socialaccount %}
 {% load staticfiles %}
 {% providers_media_js %}
-
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" type="text/css" href="{% static 'css_accounts/login.css' %}">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<div class="container">
-    <div class="kpx_login">
-        {% if user.is_authenticated %}
-        <div class="status_login">
-            <span>{{user.username}} 님 환영합니다!</span>
-            <a href="/account/logout">Logout!</a>
-        </div>
-    {% else %}
-    </div><br>
     <!--Google, Kakao Login button-->
-  <div class="sociallogin-to-bottom">
-    <br><br><br>
-    <div class="offer_sociallogin">
-        <h1>회원 가입이 안되어 있으시면, 아래의 </h1>
-    </div>
-    <div class="row kpx_row-sm-offset-3 kpx_socialButtons">
-          <div class="col-xs-2 col-sm-2">
-            <form>
-                <button class="btn-kakao" formaction="{% provider_login_url 'kakao' %}" data-toggle="tooltip" data-placement="top" title="kakao"><img class="btn-kakao-img" src ="{% static 'image/kakao/kr/kakao_account_login_btn_medium_narrow.png' %}"></img>
-            </form>
-          <div class="col-xs-2 col-sm-2">
-            <form>
-                <button class="btn-google" formaction="{% provider_login_url 'google' %}" data-toggle="tooltip" data-placement="top" title="kakao"><img class="btn-google-img" src ="{% static 'image/google/btn_google_signin_light_normal_web.png' %}"></img>
-            </form>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>Login V5</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+    <!--===============================================================================================-->	
+      <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->	
+      <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->	
+      <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <!--===============================================================================================-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css_accounts/signup.css' %}">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <div class="container" style="background-color: #2DA7E0;">
+        <div class="kpx_login">
+        {% if user.is_authenticated %}
+            <div class="status_login">
+                <span>{{user.username}} 님 환영합니다!</span>
+                <a href="/account/logout">Logout!</a>
+            </div>
+        {% else %}
+        </div><br>
+    </head>
+<body style="background-color: #2DA7E0">
+      
+      <div class="limiter">
+        <div class="container-login100" style="background-color: #2DA7E0;">
+          <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+            <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{% url 'account_signup' %}" autocomplete="off">
+            {% csrf_token %}
+              <span class="login100-form-title p-b-53">
+                회원 가입
+              </span>
+              <h5 class="social-login" style="left: 150px; text-align: center; text-size-adjust: 13px;">
+                  소셜 로그인을 원하시면 아래를 눌러주세요.
+              </h5>
+                <br><br>
+              <a href="{% provider_login_url 'kakao' %}" class="btn-face m-b-20">
+                <img class="fa fa-facebook-official"  src="{% static 'image/kakao/kr/kakao_account_login_btn_medium_narrow.png' %}"></i>
+              </a>
+    
+              <a href="{% provider_login_url 'google' %}" class="btn-google m-b-20">
+                <img src="{% static 'images/icons/icon-google.png' %}" alt="GOOGLE">
+                GOOGLE
+              </a>
+              <br><br><br>
+              <div class="login100-form-title p-b-53">
+                {{ form.as_p }}
+              </div>
+              <div class="container-login100-form-btn m-t-17">
+                <button class="login100-form-btn" type="submit">
+                  SIGN UP
+                </button>
+              </div>
           </div>
-    </div>
-    <br>
-		<div class="row kpx_row-sm-offset-3">
-			<div class="col-xs-12 col-sm-6">	
-                <form class="login" method="POST" action="{% url 'account_login' %}">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                    {% endif %}
-                    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">12334</a>
-                    <button class="primaryAction" type="submit">56456</button>
-                  </form>
-			</div>
-    	</div>
-			</div>
-			<div class="forgot-password-div">
-				<a href="/account/password/reset">Forgot password?</a>
+        </div>
       </div>
-      <div class="signup-div">
-        <a href="/account/signup">가입하기</a>  
-      </div>
-	</div>
-</div>
-<br><br>
-<script>
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-</script>
-</body>
-{% endif %}
+      
+    
+      <div id="dropDownSelect1"></div>
+      
+    <!--===============================================================================================-->
+      <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+      <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <!--===============================================================================================-->
+      <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+      <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+      <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+      <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+      <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <!--===============================================================================================-->
+      <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+    <!--===============================================================================================-->
+      <script src="{% static 'js/main.js' %}"></script>
+    
+    </body>
+    </html>
+
+{% endif %}    
 {% endblock %}

@@ -5,6 +5,7 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import auth
+from allauth.account.forms import BaseSignupForm as form
 
 # @require_http_methods(['GET', 'POST'])
 def login(request):
@@ -14,4 +15,7 @@ def account_create(request):
     return render(request, 'accounts/account_create.html')
 
 def signup(request):
-    return render(request, 'accounts/signup.html')
+    return render(request, 'accounts/signup.html', {'form':form } )
+
+def password_reset(request):
+    return render(request, 'accounts/password_reset.html', {'form': form } )

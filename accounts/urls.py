@@ -8,4 +8,5 @@ urlpatterns = [
     path('account/', include('allauth.urls')),
     path('account_create/', views.account_create, name='account_create'),
     path('signup/', views.signup, name="signup"),
+    path('password_reset/', views.password_reset, name="password_reset"),
 ]
