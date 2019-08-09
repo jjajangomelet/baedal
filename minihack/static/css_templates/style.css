@@ -1,13 +1,17 @@
-.container{
+.container-logo{
     
-    background-color : #C9DAFF;
+    background-color : #2DA7E0;
     text-align: center;
+    margin-top: center;
+    margin-bottom: center;
+    background-size : cover;
 }
 
 .title_logo{
-    margin: 0 auto;
     text-align: center;
-    
+    margin-top: center;
+    margin-bottom: center;
+    background-size : cover;
 }
 
 
