@@ -15,7 +15,7 @@ class Matching(models.Model):
     take_spot = models.CharField(max_length=255)
     banlance = models.IntegerField()
     max_user = models.IntegerField()
-    delivery_price = models.BooleanField(default=0)
+    
 
     STATUS = (
         ('P', 'PROCEEDING'),
@@ -44,6 +44,7 @@ class Restaurant(models.Model):
     address = models.CharField(max_length = 50)
     contact = models.CharField(max_length = 50)
     brandImage = models.ImageField(upload_to = 'media/restaurant')
+    delivery_fee = models.IntegerField(null=True, blank=True)
     # logo = imageField()
 
 
