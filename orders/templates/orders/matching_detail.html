@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{%load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+   
+    <link rel="stylesheet" href="{% static 'css_templates/style_nav.css' %}">
+    <a href="{% url 'orders:index'%}"></a>
+</head>
+{% block content %}
+<body>
+    <div class="matching_detail_box">
+            <h1>가게 이름 : {{matching_detail.restaurant.name}}</h1>hi
+    </div>    
+    
+    
+    
+</body>
+{% endblock content %}
+</html>

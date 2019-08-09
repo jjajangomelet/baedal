@@ -7,22 +7,51 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'css_templates/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css_templates/style_nav.css' %}">
     <title>{% block title%}{% endblock %}</title>
     {% block head %}
     {% endblock %}
 </head>
 <body>
     
-    <div class="container">
-    <div class="title_logo"><img src = "{% static 'images/title_logo.png' %}"></div>
+    <div class="nav_container">
+
+        <div class="nav_upper">
+            <div class="upper_left" >
+                
+                    <img class='nav_icon_left' src="{% static 'images/button/menu_button.png' %}">
+                
+            </div>
+            <div class="upper_center">
+                <span>음식</span>
+            </div>
+            <div class="upper_right">
+                    <img class='nav_icon_right' src="{% static 'images/button/alram_button.png' %}">
+                    <img class='nav_icon_right' src="{% static 'images/button/search_button.png' %}">
+                    
+            </div>
+
+        </div>
     
+        
+            <div class="nav_bottom">
+            <ul>
+                <li>한식</li>
+                <li>중식</li>
+                <li>일식</li>
+                <li>분식</li>
+                <li>패스트푸드</li>
+            </ul>
+            </div>
+        
 
 
     </div>
     
     {% block content %}
     {% endblock %}
-    
+
+   
+</div>
 </body>
 </html>

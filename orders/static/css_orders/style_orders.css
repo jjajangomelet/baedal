@@ -1,23 +1,68 @@
-.test_order{
-background-color: blue;
-font-size: 30px;
+.cover_fullpage{
+    width:100%; height: 100%;
+    position: absolute;
+    background-color : #2DA7E0;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+
+        
 }
 
-.cover_page_back{
-    background-color: blue;
+.cover_img{
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+
+    
+
+}
+
+
+
+body, html {
+    
+ 
     
 }
 
-.cover_page_photo{
-    position: relative;
-    opacity: 0.65;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.body_coverpage, .html_coverpage {
+    
     
 }
 
-.test{
-    background-image : url('/baedal/minihack/static/images/test.png');
-    background-color: black
+.cover{
+          /* Full height */
+  
+  position: relative;
+  text-align: center;
+ 
+  background-color : #2DA7E0;
+
+
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  
+  
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+
+
+
+
+@color1 : #99C4E9;
+@color2 : #2DA7E0;
+@color3 : #006699;
+@color4 : #B4B5B5;
+@color5 : #595757;
+@color6 : #3E3A39;

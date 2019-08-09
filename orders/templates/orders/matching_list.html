@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+    <link rel="stylesheet" href="{% static 'css_templates/style_nav.css' %}">
+</head>
+{% block content %}
+<body>
+
+    <div class="matchinglist">
+    {% for mch in matchings %}
+    <a href="{% url 'orders:matching_detail' mch.id %}">
+        <div class="matchinglist_box" >
+            <div class="listbox_img">
+               <img src = "{{mch.restaurant.brandImage.url}}">
+            </div>
+           
+
+            <div class="listbox_info">
+            
+                <div class="listbox_info_table">
+                    <div class="listbox_info_item">{{mch.restaurant.name}}</div>
+                    <div class="listbox_info_item">주문시간
+                        <span class="db_information">{{mch.expected_ordertime}}</span>
+                    </div>
+                    <div class="listbox_info_item">
+                        최소주문금액  <div class="db_information">{{mch.restaurant.min_price}} </div>
+                    </div>
+                    <div class="listbox_info_item">
+                        배달장소 <div class="db_information">{{mch.take_spot}} </div>
+                    </div>
+
+                </div>
+               
+            </div>
+        </div>
+        </a>
+
+    
+    {%endfor%}
+</div>
+
+
+
+        
+</body>
+{% endblock content %}
+</html>

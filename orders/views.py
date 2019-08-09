@@ -25,16 +25,21 @@ def create_order(request):
     create_order.save()
     return redirect("orders:read")
 
-def read(request):
-    # read_order = Order.objects.all()
-    time_now = timezone.datetime.now()
-    return render(request, "orders/read.html", { 'read_order': read_order })
+def matching_list(request):
+    matchings = Matching.objects.all()
+   
+    return render(request, "orders/matching_list.html", {'matchings' :matchings})
 
 def new_host(request):
     return render(request, "orders/new_host.html")
 
-def detail(request):
-    return render(request, "orders/detail.html")
+def matching_detail(request, matching_id):
+    matching_detail = get_object_or_404(Matching, pk = matching_id)
+    return render(request, "orders/matching_detail.html", {'matching_detail' :matching_detail})
 
 def new_participant(request):
     return render(request, "orders/new_participant.html")
+
+def matching_create(request):
+    restaurants = Restaurant.get_object_or_404
+    return render(request, "orders/matching_create.html")
